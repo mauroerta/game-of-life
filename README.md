@@ -10,7 +10,7 @@ and about John Horton Conway by following this link <https://en.wikipedia.org/wi
 
 ## How to play
 
-1. Clone the repo
+1. Clone the repo `git clone git@github.com:mauroerta/game-of-life.git`
 2. Run `npm install`
 3. Run `npm start`
 4. Generate a `🔀 random` initial map
