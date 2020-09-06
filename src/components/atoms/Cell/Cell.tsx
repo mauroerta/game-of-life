@@ -1,18 +1,17 @@
 import React, { useMemo } from "react";
 
 type Props = {
-  cols: number;
+  width: string;
   alive?: boolean;
   onClick: () => void;
 };
 
 export const Cell: React.FC<Props> = ({
   alive = false,
-  cols,
+  width,
   children,
   onClick,
 }) => {
-  const width = useMemo(() => `${100 / cols}%`, [cols]);
   const backgroundColor = useMemo(() => (alive ? "#34495e" : "#ecf0f1"), [
     alive,
   ]);
@@ -22,11 +21,10 @@ export const Cell: React.FC<Props> = ({
     <div
       style={{
         width,
-        height: "16.625px",
+        minHeight: "16px",
+        padding: 0,
         backgroundColor,
         color,
-        borderWidth: 1,
-        borderColor: "red",
       }}
       role="button"
       onClick={onClick}

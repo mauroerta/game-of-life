@@ -4,6 +4,7 @@ export type MainState = {
   cols: number;
   rows: number;
   step: number;
+  isPlaying: boolean;
 };
 
 export type SetCellPayload = {

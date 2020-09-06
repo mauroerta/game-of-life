@@ -1,6 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
   nextStep,
+  playAction,
   resetAction,
   randomAction,
   setCellAction,
@@ -35,6 +36,7 @@ const randomCase = (state: MainState): MainState => {
     rows,
     cols,
     step: 0,
+    isPlaying: false,
   };
 };
 
@@ -48,6 +50,14 @@ const resetCase = (state: MainState): MainState => {
     rows,
     cols,
     step: 0,
+    isPlaying: false,
+  };
+};
+
+const playCase = (state: MainState): MainState => {
+  return {
+    ...state,
+    isPlaying: !state.isPlaying,
   };
 };
 
@@ -82,6 +92,7 @@ const setCellsCase = (
 
 export const gofReducer = createReducer<MainState>(INITIAL_STATE, {
   [nextStep.type]: nextStepCase,
+  [playAction.type]: playCase,
   [resetAction.type]: resetCase,
   [randomAction.type]: randomCase,
   [setCellAction.type]: setCellCase,

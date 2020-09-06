@@ -15,6 +15,7 @@ const buttonStyle: React.CSSProperties = {
 const labelStyle: React.CSSProperties = {
   display: "block",
   width: "100%",
+  fontSize: "20px",
   textAlign: "center",
 };
 

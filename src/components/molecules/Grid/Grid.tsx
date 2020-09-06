@@ -1,20 +1,24 @@
 import React, { useCallback, useMemo, useEffect } from "react";
 import { Cell } from "../../atoms";
-import { useGol } from "../../../state";
 
 type Props = {
   play: boolean;
+  cols: number;
+  rows: number;
+  cells: boolean[];
+  nextStep: () => void;
+  toggleCell: (index: number) => void;
 };
 
-export const Grid: React.FC<Props> = ({ play }) => {
-  const { cells, nextStep, cols, rows, toggleCell } = useGol();
-
-  const onClick = useCallback(
-    (index: number) => {
-      toggleCell(index);
-    },
-    [toggleCell]
-  );
+export const Grid: React.FC<Props> = ({
+  play,
+  cells,
+  cols,
+  rows,
+  nextStep,
+  toggleCell,
+}) => {
+  const cellWidth = useMemo(() => `${100 / cols}%`, [cols]);
 
   const renderItem = useCallback(
     (alive: boolean, index: number) => {
@@ -22,12 +26,12 @@ export const Grid: React.FC<Props> = ({ play }) => {
         <Cell
           key={index}
           alive={alive}
-          cols={cols}
-          onClick={() => onClick(index)}
+          width={cellWidth}
+          onClick={() => toggleCell(index)}
         />
       );
     },
-    [cols, onClick]
+    [cellWidth, toggleCell]
   );
 
   const renderedCells = useMemo(() => cells.map(renderItem), [

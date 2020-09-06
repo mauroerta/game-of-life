@@ -26,6 +26,11 @@ export const selectStep = createSelector(
   (state: MainState): number => state.step
 );
 
+export const selectIsPlaying = createSelector(
+  getState,
+  (state: MainState): boolean => state.isPlaying
+);
+
 export const getIsLopping = createSelector(
   getState,
   (state: MainState): boolean => {

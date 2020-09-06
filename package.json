@@ -1,6 +1,10 @@
 {
   "name": "game-of-life",
   "version": "0.1.0",
+  "author": {
+    "email": "mauro@vlkstudio.com",
+    "name": "Mauro Erta"
+  },
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",

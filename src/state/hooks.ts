@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   nextStep as nextStepAction,
+  playAction,
   resetAction,
   randomAction,
   setCellAction,
@@ -13,6 +14,7 @@ import {
   selectRows,
   selectStep,
   getIsLopping,
+  selectIsPlaying,
 } from "./selectors";
 
 export function useGol() {
@@ -21,6 +23,7 @@ export function useGol() {
   const cols = useSelector(selectCols);
   const rows = useSelector(selectRows);
   const step = useSelector(selectStep);
+  const play = useSelector(selectIsPlaying);
   const isLooping = useSelector(getIsLopping);
 
   const nextStep = useCallback(() => {
@@ -33,6 +36,10 @@ export function useGol() {
 
   const reset = useCallback(() => {
     dispatch(resetAction());
+  }, [dispatch]);
+
+  const setPlay = useCallback(() => {
+    dispatch(playAction());
   }, [dispatch]);
 
   const toggleCell = useCallback(
@@ -51,12 +58,14 @@ export function useGol() {
 
   return {
     cells,
+    play,
     cols,
     rows,
     step,
     isLooping,
     reset,
     random,
+    setPlay,
     setCells,
     nextStep,
     toggleCell,
